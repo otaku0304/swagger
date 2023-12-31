@@ -1,0 +1,9 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 15MB
+  data:
+    mongodb:
+      database: SWAG
+      uri: mongodb+srv://saikrishnachaitanya61:JKPKHFNAa9QmJCQk@cluster0.h7tl3uw.mongodb.net/
