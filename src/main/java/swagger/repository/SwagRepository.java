@@ -1,6 +1,6 @@
-package com.swag.swag.repository;
+package swagger.repository;
 
-import com.swag.swag.entity.Swag;
+import swagger.entity.Swag;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.swag.swag.dto;
+package swagger.dto;
 
 import lombok.*;
 

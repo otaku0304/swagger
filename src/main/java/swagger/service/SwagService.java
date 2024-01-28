@@ -1,10 +1,10 @@
-package com.swag.swag.service;
+package swagger.service;
 
-import com.swag.swag.converter.SwagConverter;
-import com.swag.swag.dto.HttpResponseDTO;
-import com.swag.swag.dto.SwagDTO;
-import com.swag.swag.entity.Swag;
-import com.swag.swag.repository.SwagRepository;
+import swagger.converter.SwagConverter;
+import swagger.dto.HttpResponseDTO;
+import swagger.dto.SwagDTO;
+import swagger.entity.Swag;
+import swagger.repository.SwagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;

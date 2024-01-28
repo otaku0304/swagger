@@ -1,7 +1,7 @@
-package com.swag.swag.converter;
+package swagger.converter;
 
-import com.swag.swag.dto.SwagDTO;
-import com.swag.swag.entity.Swag;
+import swagger.dto.SwagDTO;
+import swagger.entity.Swag;
 
 public class SwagConverter {
 

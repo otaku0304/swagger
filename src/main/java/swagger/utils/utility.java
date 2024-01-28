@@ -1,6 +1,6 @@
-package com.swag.swag.utils;
+package swagger.utils;
 
-import com.swag.swag.entity.GenericDetails;
+import swagger.entity.GenericDetails;
 import org.apache.maven.shared.utils.StringUtils;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 

@@ -1,13 +1,13 @@
-package com.swag.swag;
+package swagger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SwagApplication {
+public class SwaggerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SwagApplication.class, args);
+		SpringApplication.run(SwaggerApplication.class, args);
 	}
 
 }

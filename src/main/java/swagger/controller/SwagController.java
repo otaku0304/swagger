@@ -1,8 +1,8 @@
-package com.swag.swag.controller;
+package swagger.controller;
 
-import com.swag.swag.dto.HttpResponseDTO;
-import com.swag.swag.dto.SwagDTO;
-import com.swag.swag.service.SwagService;
+import swagger.dto.HttpResponseDTO;
+import swagger.dto.SwagDTO;
+import swagger.service.SwagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
