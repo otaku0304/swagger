@@ -4,7 +4,7 @@ import lombok.*;
 
 @Getter
 @Setter
-public class SwagDTO {
+public class SwaggerDTO {
     private String swagContent;
     private String user;
 }

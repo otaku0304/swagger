@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "SAVE_SWAG")
-public class Swag implements Serializable {
+public class Swagger implements Serializable {
     @Id
     private String id;
     private String swagContent;

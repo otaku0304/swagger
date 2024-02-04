@@ -1,22 +1,26 @@
 package swagger.service;
 
-import swagger.converter.SwagConverter;
+import swagger.converter.SwaggerConverter;
 import swagger.dto.HttpResponseDTO;
-import swagger.dto.SwagDTO;
-import swagger.entity.Swag;
-import swagger.repository.SwagRepository;
+import swagger.dto.SwaggerDTO;
+import swagger.entity.Swagger;
+import swagger.repository.SwaggerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 @Service
-public class SwagService {
-    @Autowired
-    private SwagRepository swagRepository;
+public class SwaggerService {
 
-    public HttpResponseDTO saveSWAG(final SwagDTO swagDTO) {
+    private final SwaggerRepository swaggerRepository;
+    @Autowired
+    public SwaggerService(SwaggerRepository swaggerRepository){
+        this.swaggerRepository = swaggerRepository;
+    }
+
+    public HttpResponseDTO saveSwagger(final SwaggerDTO swagDTO) {
         HttpResponseDTO httpResponseDTO = new HttpResponseDTO();
-        Swag swag = swagRepository.save(SwagConverter.convertSwagDTOtoEntity(swagDTO));
+        Swagger swag = swaggerRepository.save(SwaggerConverter.convertSwagDTOtoEntity(swagDTO));
         if (!ObjectUtils.isEmpty(swag)) {
             httpResponseDTO.setResponseCode(201);
             httpResponseDTO.setResponseMessage("Swag Saved successfully");

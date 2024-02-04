@@ -1,22 +1,24 @@
 package swagger.controller;
 
 import swagger.dto.HttpResponseDTO;
-import swagger.dto.SwagDTO;
-import swagger.service.SwagService;
+import swagger.dto.SwaggerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import swagger.service.SwaggerService;
 
 @RestController
 @RequestMapping("/swag")
-class SwagController {
-    @Autowired
-    SwagService swagService;
+class SwaggerController {
 
-    @PostMapping(value = "/save-swag")
-    public ResponseEntity<HttpResponseDTO> saveSwag(@RequestBody SwagDTO swagDTO) {
-        HttpResponseDTO httpResponseDTO = swagService.saveSWAG(swagDTO);
+    @Autowired
+    private SwaggerService swaggerService;
+
+
+    @PostMapping(value = "/save-swagger")
+    public ResponseEntity<HttpResponseDTO> saveSwagger(@RequestBody SwaggerDTO swagDTO) {
+        HttpResponseDTO httpResponseDTO = swaggerService.saveSwagger(swagDTO);
         if (httpResponseDTO.getResponseCode() == 201) {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);
         } else {

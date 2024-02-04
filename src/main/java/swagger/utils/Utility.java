@@ -9,7 +9,12 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class utility {
+public class Utility {
+
+    private Utility() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String base64Encode(final String code) {
         byte[] encodedBytes = Base64.getEncoder().encode(code.getBytes());
         return new String(encodedBytes, StandardCharsets.UTF_8);
@@ -21,7 +26,7 @@ public class utility {
     }
 
     public static String generateUuid(final String email) {
-        return String.format("%s-%s", UUID.randomUUID(), StringUtils.lowerCase(utility.base64Encode(email))
+        return String.format("%s-%s", UUID.randomUUID(), StringUtils.lowerCase(Utility.base64Encode(email))
                 .replace("=", ""));
 
     }
@@ -51,12 +56,6 @@ public class utility {
         return BCrypt.hashpw(password, BCrypt.gensalt(10));
     }
 
-//    public static boolean checkIsJwtTokenValid(final List<String> authorizedToken) {
-//        if (Objects.nonNull(authorizedToken)) {
-//            return JWTTokenProvider.isValid(authorizedToken.get(0));
-//        }
-//        return false;
-//    }
 
     public static boolean checkPassword(final String password, final String hashedPassword) {
         return BCrypt.checkpw(password, hashedPassword);
