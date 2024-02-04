@@ -12,9 +12,11 @@ import swagger.service.SwaggerService;
 @RequestMapping("/swag")
 class SwaggerController {
 
+    private final SwaggerService swaggerService;
     @Autowired
-    private SwaggerService swaggerService;
-
+    private SwaggerController(SwaggerService swaggerService){
+        this.swaggerService = swaggerService;
+    }
 
     @PostMapping(value = "/save-swagger")
     public ResponseEntity<HttpResponseDTO> saveSwagger(@RequestBody SwaggerDTO swagDTO) {
