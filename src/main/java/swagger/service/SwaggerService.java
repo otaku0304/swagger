@@ -1,20 +1,21 @@
 package swagger.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import swagger.converter.SwaggerConverter;
 import swagger.dto.HttpResponseDTO;
 import swagger.dto.SwaggerDTO;
 import swagger.entity.Swagger;
 import swagger.repository.SwaggerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 
 @Service
 public class SwaggerService {
 
     private final SwaggerRepository swaggerRepository;
+
     @Autowired
-    public SwaggerService(SwaggerRepository swaggerRepository){
+    public SwaggerService(SwaggerRepository swaggerRepository) {
         this.swaggerRepository = swaggerRepository;
     }
 

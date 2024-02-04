@@ -1,11 +1,14 @@
 package swagger.controller;
 
-import swagger.dto.HttpResponseDTO;
-import swagger.dto.SwaggerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import swagger.dto.HttpResponseDTO;
+import swagger.dto.SwaggerDTO;
 import swagger.service.SwaggerService;
 
 @RestController
@@ -13,8 +16,9 @@ import swagger.service.SwaggerService;
 class SwaggerController {
 
     private final SwaggerService swaggerService;
+
     @Autowired
-    private SwaggerController(SwaggerService swaggerService){
+    private SwaggerController(SwaggerService swaggerService) {
         this.swaggerService = swaggerService;
     }
 

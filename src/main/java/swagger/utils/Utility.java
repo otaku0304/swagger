@@ -1,13 +1,15 @@
 package swagger.utils;
 
-import swagger.entity.GenericDetails;
 import org.apache.maven.shared.utils.StringUtils;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import swagger.entity.GenericDetails;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Base64;
+import java.util.Date;
+import java.util.UUID;
 
 public class Utility {
 
