@@ -2,6 +2,7 @@ package swagger.converter;
 
 import swagger.dto.SwaggerDTO;
 import swagger.entity.Swagger;
+import swagger.utils.Utility;
 
 public class SwaggerConverter {
 
@@ -13,6 +14,7 @@ public class SwaggerConverter {
         return Swagger.builder()
                 .swagContent(swagDTO.getSwagContent())
                 .user(swagDTO.getUser())
+                .genericDetails(Utility.createGenericDetails(swagDTO.getUser()))
                 .build();
     }
 }

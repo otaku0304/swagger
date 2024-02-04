@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Swagger")
+@Document(collection = "save-swagger")
 public class Swagger implements Serializable {
     @Id
     private String id;

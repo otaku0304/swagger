@@ -21,7 +21,7 @@ class SwaggerController {
     }
 
     @PostMapping(value = "/save-swagger")
-    public ResponseEntity<HttpResponseDTO> saveSwagger(@RequestBody SwaggerDTO swagDTO) {
+    public ResponseEntity<HttpResponseDTO> saveSwagger(@RequestBody final SwaggerDTO swagDTO) {
         HttpResponseDTO httpResponseDTO = swaggerService.saveSwagger(swagDTO);
         if (httpResponseDTO.getResponseCode() == 201) {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);

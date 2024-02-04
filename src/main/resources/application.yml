@@ -5,5 +5,5 @@ spring:
       max-request-size: 15MB
   data:
     mongodb:
-      database: SWAG
-      url: mongodb+srv://saikrishnachaitanya61:JKPKHFNAa9QmJCQk@cluster0.h7tl3uw.mongodb.net/
+      database: Cluster0
+      uri: mongodb+srv://saikrishnachaitanya61:aHnSnFTy2JI7X2V0@cluster0.pivbjqp.mongodb.net/?retryWrites=true&w=majority
