@@ -10,11 +10,11 @@ public class SwaggerConverter {
         throw new IllegalStateException("SwaggerConverter class");
     }
 
-    public static Swagger convertSwagDTOtoEntity(final SwaggerDTO swagDTO) {
+    public static Swagger convertSwaggerDTOtoEntity(final SwaggerDTO swaggerDTO) {
         return Swagger.builder()
-                .swagContent(swagDTO.getSwagContent())
-                .user(swagDTO.getUser())
-                .genericDetails(Utility.createGenericDetails(swagDTO.getUser()))
+                .swaggerContent(swaggerDTO.getSwaggerContent())
+                .user(swaggerDTO.getUser())
+                .genericDetails(Utility.createGenericDetails(swaggerDTO.getUser()))
                 .build();
     }
 }

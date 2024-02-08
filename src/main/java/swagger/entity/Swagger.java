@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class Swagger implements Serializable {
     @Id
     private String id;
-    private String swagContent;
+    private String swaggerContent;
     private String user;
     private GenericDetails genericDetails;
 }

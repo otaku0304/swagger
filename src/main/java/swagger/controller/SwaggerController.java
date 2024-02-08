@@ -29,5 +29,25 @@ class SwaggerController {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping(value = "/call-fetch-swag")
+    public ResponseEntity<HttpResponseDTO> callFetchSwag(@RequestParam final String user) {
+        HttpResponseDTO httpResponseDTO = swaggerService.callFetchSwag(user);
+        if (httpResponseDTO.getResponseCode() == 201) {
+            return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(httpResponseDTO, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping(value = "/fetch-swagger")
+    public ResponseEntity<HttpResponseDTO> fetchSwagger(@RequestParam final String user) {
+        HttpResponseDTO httpResponseDTO = swaggerService.fetchSwaggerList(user);
+        if (httpResponseDTO.getResponseCode() == 201) {
+            return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(httpResponseDTO, HttpStatus.NOT_FOUND);
+        }
+    }
 }
 

@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SwaggerDTO {
-    private String swagContent;
+    private String swaggerContent;
     private String user;
 }
