@@ -20,8 +20,9 @@ import java.util.List;
 public class SwaggerService {
     @Value("${swag.service.url}")
     private String swagServiceUrl;
+    @Value("${swaggest.service.url}")
+    private String swaggestServiceUrl;
     private final RestTemplate restTemplate;
-
     private final SwaggerRepository swaggerRepository;
 
     @Autowired
@@ -44,23 +45,14 @@ public class SwaggerService {
         return httpResponseDTO;
     }
 
-    public HttpResponseDTO callFetchSwag(final String user) {
-        String url = swagServiceUrl + "/swag/fetch-swag?user=" + user;
-        ResponseEntity<HttpResponseDTO> responseEntity = restTemplate.getForEntity(url, HttpResponseDTO.class);
-        return responseEntity.getBody();
-    }
-
     public HttpResponseDTO fetchSwaggerList(String user) {
         HttpResponseDTO httpResponseDTO = new HttpResponseDTO();
         List<Swagger> swaggerList = swaggerRepository.findByUser(user);
-
         if (!swaggerList.isEmpty()) {
             List<String> swaggerContents = new ArrayList<>();
-
             for (Swagger swagger : swaggerList) {
                 swaggerContents.add(swagger.getSwaggerContent());
             }
-
             httpResponseDTO.setResponseCode(200);
             httpResponseDTO.setResponseMessage("STATUS_200");
             httpResponseDTO.setResponseBody(swaggerContents);
@@ -68,8 +60,19 @@ public class SwaggerService {
             httpResponseDTO.setResponseCode(404);
             httpResponseDTO.setResponseMessage("STATUS_404: User not found");
         }
-
         return httpResponseDTO;
+    }
+
+    public HttpResponseDTO callFetchSwag(final String user) {
+        String url = swagServiceUrl + "/swag/fetch-swag?user=" + user;
+        ResponseEntity<HttpResponseDTO> responseEntity = restTemplate.getForEntity(url, HttpResponseDTO.class);
+        return responseEntity.getBody();
+    }
+
+    public HttpResponseDTO callFetchSwaggest(final String user) {
+        String url = swaggestServiceUrl + "/swaggest/fetch-swaggest?user=" + user;
+        ResponseEntity<HttpResponseDTO> responseEntity = restTemplate.getForEntity(url, HttpResponseDTO.class);
+        return responseEntity.getBody();
     }
 
 }

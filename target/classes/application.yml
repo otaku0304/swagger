@@ -11,3 +11,7 @@ spring:
 swag:
   service:
     url: http://localhost:8081/
+
+swaggest:
+  service:
+    url: http://localhost:8083/
