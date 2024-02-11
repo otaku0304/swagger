@@ -40,19 +40,22 @@ class SwaggerController {
         }
     }
 
-    @GetMapping(value = "/call-fetch-swag")
-    public ResponseEntity<HttpResponseDTO> callFetchSwag(@RequestParam final String user) {
-        HttpResponseDTO httpResponseDTO = swaggerService.callFetchSwag(user);
-        if (httpResponseDTO.getResponseCode() == 201) {
+    @GetMapping(value = "/fetch-swag")
+    public ResponseEntity<HttpResponseDTO> fetchSwag(@RequestParam final String user) {
+        HttpResponseDTO httpResponseDTO = swaggerService.fetchSwag(user);
+        if (httpResponseDTO.getResponseCode() == HttpStatus.CREATED.value()) {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);
-        } else {
+        } else if (httpResponseDTO.getResponseCode() == HttpStatus.NOT_FOUND.value()) {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(httpResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping(value = "/call-fetch-swaggest")
-    public ResponseEntity<HttpResponseDTO> callFetchSwaggest(@RequestParam final String user) {
-        HttpResponseDTO httpResponseDTO = swaggerService.callFetchSwaggest(user);
+
+    @GetMapping(value = "/fetch-swaggest")
+    public ResponseEntity<HttpResponseDTO> fetchSwaggest(@RequestParam final String user) {
+        HttpResponseDTO httpResponseDTO = swaggerService.fetchSwaggest(user);
         if (httpResponseDTO.getResponseCode() == 201) {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);
         } else {

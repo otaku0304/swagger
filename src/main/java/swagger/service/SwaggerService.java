@@ -63,13 +63,14 @@ public class SwaggerService {
         return httpResponseDTO;
     }
 
-    public HttpResponseDTO callFetchSwag(final String user) {
+    public HttpResponseDTO fetchSwag(final String user) {
         String url = swagServiceUrl + "/swag/fetch-swag?user=" + user;
         ResponseEntity<HttpResponseDTO> responseEntity = restTemplate.getForEntity(url, HttpResponseDTO.class);
         return responseEntity.getBody();
     }
 
-    public HttpResponseDTO callFetchSwaggest(final String user) {
+
+    public HttpResponseDTO fetchSwaggest(final String user) {
         String url = swaggestServiceUrl + "/swaggest/fetch-swaggest?user=" + user;
         ResponseEntity<HttpResponseDTO> responseEntity = restTemplate.getForEntity(url, HttpResponseDTO.class);
         return responseEntity.getBody();
