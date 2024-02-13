@@ -33,6 +33,12 @@ public class SwaggerService {
 
     public HttpResponseDTO saveSwagger(final SwaggerDTO swaggerDTO) {
         HttpResponseDTO httpResponseDTO = new HttpResponseDTO();
+        boolean exists = swaggerRepository.existsByUserAndSwaggerContent(swaggerDTO.getUser(), swaggerDTO.getSwaggerContent());
+        if (exists) {
+            httpResponseDTO.setResponseCode(409);
+            httpResponseDTO.setResponseMessage("Swagger content already exists for this user");
+            return httpResponseDTO;
+        }
         Swagger swag = swaggerRepository.save(SwaggerConverter.convertSwaggerDTOtoEntity(swaggerDTO));
         if (!ObjectUtils.isEmpty(swag)) {
             httpResponseDTO.setResponseCode(201);
@@ -45,7 +51,7 @@ public class SwaggerService {
         return httpResponseDTO;
     }
 
-    public HttpResponseDTO fetchSwaggerList(String user) {
+    public HttpResponseDTO fetchSwaggerList(final String user) {
         HttpResponseDTO httpResponseDTO = new HttpResponseDTO();
         List<Swagger> swaggerList = swaggerRepository.findByUser(user);
         if (!swaggerList.isEmpty()) {
@@ -54,11 +60,11 @@ public class SwaggerService {
                 swaggerContents.add(swagger.getSwaggerContent());
             }
             httpResponseDTO.setResponseCode(200);
-            httpResponseDTO.setResponseMessage("STATUS_200");
+            httpResponseDTO.setResponseMessage("Swagger fetched for user successfully");
             httpResponseDTO.setResponseBody(swaggerContents);
         } else {
             httpResponseDTO.setResponseCode(404);
-            httpResponseDTO.setResponseMessage("STATUS_404: User not found");
+            httpResponseDTO.setResponseMessage("User not found");
         }
         return httpResponseDTO;
     }

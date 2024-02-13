@@ -25,7 +25,9 @@ class SwaggerController {
         HttpResponseDTO httpResponseDTO = swaggerService.saveSwagger(swagDTO);
         if (httpResponseDTO.getResponseCode() == 201) {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);
-        } else {
+        } else if (httpResponseDTO.getResponseCode()  == 409) {
+            return new ResponseEntity<>(httpResponseDTO, HttpStatus.CONFLICT);
+        }  else {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.BAD_REQUEST);
         }
     }
@@ -33,7 +35,7 @@ class SwaggerController {
     @GetMapping(value = "/fetch-swagger")
     public ResponseEntity<HttpResponseDTO> fetchSwagger(@RequestParam final String user) {
         HttpResponseDTO httpResponseDTO = swaggerService.fetchSwaggerList(user);
-        if (httpResponseDTO.getResponseCode() == 201) {
+        if (httpResponseDTO.getResponseCode() == 200) {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.NOT_FOUND);
