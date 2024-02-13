@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface SwaggerRepository extends MongoRepository<Swagger, String> {
     List<Swagger> findByUser(String user);
-    boolean existsByUserAndSwaggerContent(String user, String swaggerContent);
 }
