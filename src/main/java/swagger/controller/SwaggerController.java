@@ -20,9 +20,9 @@ class SwaggerController {
         this.swaggerService = swaggerService;
     }
 
-    @PostMapping(value = "/save-swagger")
+    @PostMapping(value = "/save")
     public ResponseEntity<HttpResponseDTO> saveSwagger(@RequestBody final SwaggerDTO swagDTO) {
-        HttpResponseDTO httpResponseDTO = swaggerService.saveSwagger(swagDTO);
+        HttpResponseDTO httpResponseDTO = swaggerService.save(swagDTO);
         if (httpResponseDTO.getResponseCode() == 201) {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);
         } else {
@@ -30,9 +30,9 @@ class SwaggerController {
         }
     }
 
-    @GetMapping(value = "/fetch-swagger")
-    public ResponseEntity<HttpResponseDTO> fetchSwagger(@RequestParam final String user) {
-        HttpResponseDTO httpResponseDTO = swaggerService.fetchSwaggerList(user);
+    @GetMapping(value = "/fetch")
+    public ResponseEntity<HttpResponseDTO> fetch(@RequestParam final String user) {
+        HttpResponseDTO httpResponseDTO = swaggerService.fetch(user);
         if (httpResponseDTO.getResponseCode() == 201) {
             return new ResponseEntity<>(httpResponseDTO, HttpStatus.CREATED);
         } else {

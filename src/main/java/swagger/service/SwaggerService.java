@@ -31,7 +31,7 @@ public class SwaggerService {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    public HttpResponseDTO saveSwagger(final SwaggerDTO swaggerDTO) {
+    public HttpResponseDTO save(final SwaggerDTO swaggerDTO) {
         HttpResponseDTO httpResponseDTO = new HttpResponseDTO();
         Swagger swag = swaggerRepository.save(SwaggerConverter.convertSwaggerDTOtoEntity(swaggerDTO));
         if (!ObjectUtils.isEmpty(swag)) {
@@ -45,7 +45,7 @@ public class SwaggerService {
         return httpResponseDTO;
     }
 
-    public HttpResponseDTO fetchSwaggerList(String user) {
+    public HttpResponseDTO fetch(String user) {
         HttpResponseDTO httpResponseDTO = new HttpResponseDTO();
         List<Swagger> swaggerList = swaggerRepository.findByUser(user);
         if (!swaggerList.isEmpty()) {
@@ -64,14 +64,14 @@ public class SwaggerService {
     }
 
     public HttpResponseDTO fetchSwag(final String user) {
-        String url = swagServiceUrl + "/swag/fetch-swag?user=" + user;
+        String url = swagServiceUrl + "/swag/fetch?user=" + user;
         ResponseEntity<HttpResponseDTO> responseEntity = restTemplate.getForEntity(url, HttpResponseDTO.class);
         return responseEntity.getBody();
     }
 
 
     public HttpResponseDTO fetchSwaggest(final String user) {
-        String url = swaggestServiceUrl + "/swaggest/fetch-swaggest?user=" + user;
+        String url = swaggestServiceUrl + "/swaggest/fetch?user=" + user;
         ResponseEntity<HttpResponseDTO> responseEntity = restTemplate.getForEntity(url, HttpResponseDTO.class);
         return responseEntity.getBody();
     }
